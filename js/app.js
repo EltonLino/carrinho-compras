@@ -5,13 +5,17 @@ function adicionar() {
     let precoProduto = produtoSelecionado.split('R$')[1];
     let carrinho = document.getElementById('lista-produtos');
     let subtotal = quantidade * precoProduto;
-    carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
+    if (quantidade != "") {
+        carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
           <span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul">R$${precoProduto}</span>
         </section>`;
-    valorTotal = valorTotal + subtotal;
+        valorTotal = valorTotal + subtotal;
         let valorTotalCarrinho = document.getElementById('valor-total');
-    valorTotalCarrinho.textContent = `R$ ${valorTotal}`
-    document.getElementById('quantidade').value = '<input class="quantidade-input" id="quantidade" type="number" placeholder="100">'
+        valorTotalCarrinho.textContent = `R$ ${valorTotal}`;
+        document.getElementById('quantidade').value = '<input class="quantidade-input" id="quantidade" type="number" placeholder="100">';
+    } else {
+        alert('Defina a quantidade deste item');
+    }
 }
 
 function limpar() {
